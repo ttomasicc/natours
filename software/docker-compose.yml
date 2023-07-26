@@ -1,0 +1,21 @@
+version: "3.9"
+
+networks:
+  default:
+    name: "natours-app"
+
+volumes:
+  mongodb_vol:
+    name: mongodb-data
+
+services:
+  mongo:
+    image: mongo:6.0.8-jammy
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - "mongodb_vol:/data/db"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=pass
